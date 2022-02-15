@@ -1,8 +1,8 @@
 const main = async () => {
-  // const Land = await hre.ethers.getContractFactory("Land");
-  // const LandContract = await Land.deploy();
-  // await LandContract.deployed();
-  // console.log("Contract deployed to:", LandContract.address);
+  const Land = await hre.ethers.getContractFactory("Land");
+  const LandContract = await Land.deploy();
+  await LandContract.deployed();
+  console.log("Contract deployed to:", LandContract.address);
   const [randomPerson1, randomPerson2] = await hre.ethers.getSigners();
   console.log("HAHAHAHA");
   console.log(randomPerson1.address);
