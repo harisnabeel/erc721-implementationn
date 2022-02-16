@@ -3,7 +3,7 @@ const main = async () => {
   // const accounts = await ethers.provider.listAccounts();
   // console.log(accounts);
   // get contract with name
-    const [randomPerson1, randomPerson2] = await hre.ethers.getSigners();
+    const [randomPerson1, randomPerson2,add3,add4,add5] = await hre.ethers.getSigners();
 
     let contractInstance = await ethers.getContractFactory("Land");
     const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
@@ -11,7 +11,7 @@ const main = async () => {
     const Cinstance = await contractInstance.attach(address);
 
   //  // console.log(contractInstance);
-    let createNft = await Cinstance.connect(randomPerson2)._mint({value: 1});
+    let createNft = await Cinstance.connect(add5)._mint({value: 1});
     await createNft.wait();
   //   console.log("done");
     // you can now call any function using contract instance. e.g

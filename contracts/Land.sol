@@ -5,9 +5,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "hardhat/console.sol";
 contract Land is ERC721{
 
-    address _owner;
+     address private _owner;
     constructor() ERC721("My Land","ML"){
-        console.log("Hey! this is Haris Nabeel");
         console.log("This contract is deployed by " , msg.sender);
         _owner = msg.sender;
     }
@@ -31,6 +30,10 @@ contract Land is ERC721{
         modifier onlyOwner(address a) {
             require(a==_owner,"Caller is not the owner");
             _;
+        }
+
+        function owner() public view returns(address){
+            return _owner;
         }
         
 }
