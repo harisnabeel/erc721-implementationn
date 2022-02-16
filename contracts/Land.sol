@@ -16,7 +16,7 @@ contract Land is ERC721{
         Counters.Counter myCounter;
         // event MyLog(uint256);
         function _mint() public payable{
-            require(msg.value == 1 ether , "Send more ethers: 1 ether is required");
+            require(msg.value == 1 , "Send more ethers: 1 ether is required");
             require(balanceOf(msg.sender)==0, "You can not have more than 1 Land");
             myCounter.increment();
             console.log(myCounter.current() );
