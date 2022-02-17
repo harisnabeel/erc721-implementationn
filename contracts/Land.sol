@@ -7,7 +7,7 @@ contract Land is ERC721{
 
      address private _owner;
     constructor() ERC721("My Land","ML"){
-        console.log("This contract is deployed by " , msg.sender);
+       // console.log("This contract is deployed by " , msg.sender);
         _owner = msg.sender;
     }
 
@@ -18,7 +18,7 @@ contract Land is ERC721{
             require(msg.value == 1 , "Send more ethers: 1 ether is required");
             require(balanceOf(msg.sender)==0, "You can not have more than 1 Land");
             myCounter.increment();
-            console.log(myCounter.current() );
+          //  console.log(myCounter.current() );
             // emit MyLog(myCounter.current());
             _safeMint(msg.sender,myCounter.current());
         }
