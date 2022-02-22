@@ -1,29 +1,27 @@
 const main = async () => {
+  // getting deployer address
+  const [deployer] = await hre.ethers.getSigners();
+  // getting contract
+  let LandContract = await ethers.getContractFactory("Land");
+  const CONTRACT_ADDRESS = "0x71f979322D48c6670b8510b9b3030E675BE4353A";
+  // pass deployed address to create its instance
+  const LAND_CONTRACT_INSTANCE = await LandContract.attach(CONTRACT_ADDRESS);
+  // creating/minting NFT
+  let createNft = await LAND_CONTRACT_INSTANCE.connect(deployer)._mint({
+    value: 1,
+  });
+  await createNft.wait();
+  console.log("Minted successfully");
+  // you can now call any function using contract instance. e.g
+  // console.log(randomPerson1);
 
-  // const accounts = await ethers.provider.listAccounts();
-  // console.log(accounts);
-  // get contract with name
-    const [randomPerson1, randomPerson2,add3,add4,add5] = await hre.ethers.getSigners();
-
-    let contractInstance = await ethers.getContractFactory("Land");
-    const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-  //   // pass deployed address to create its instance
-    const Cinstance = await contractInstance.attach(address);
-
-  //  // console.log(contractInstance);
-    let createNft = await Cinstance.connect(add5)._mint({value: 1});
-    await createNft.wait();
-  //   console.log("done");
-    // you can now call any function using contract instance. e.g
-    // console.log(randomPerson1);
-  
-    // console.log("Hello World");
+  // console.log("Hello World");
   // console.log("Haris nabeel here");
   // const Land = await hre.ethers.getContractFactory("Land");
   // const LandContract = await Land.deploy();
   // await LandContract.deployed();
   // console.log("Contract deployed to:", LandContract.address);
-  
+
   // console.log("HAHAHAHA");
   // console.log(randomPerson1.address);
   // console.log("HAHAHAHA 222");
@@ -34,7 +32,6 @@ const main = async () => {
   //  createNft = await LandContract._mint({from:randomPerson2.address, value:1});
   // await createNft.wait();
   // console.log("Land created for" + randomPerson2);
-
 };
 
 const runMain = async () => {

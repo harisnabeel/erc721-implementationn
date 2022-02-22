@@ -1,5 +1,8 @@
 require("@nomiclabs/hardhat-waffle");
+const { version } = require("chai");
+let secret = require("./secret.json");
 
+console.log(version());
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -18,4 +21,22 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
+  networks: {
+    rinkeby: {
+      url: `${secret.rinkeby_key}`,
+      accounts: [secret.key],
+    },
+    ropsten: {
+      url: `${secret.ropsten_key}`,
+      accounts: [secret.key],
+    },
+    goerli: {
+      url: `${secret.goerli_key}`,
+      accounts: [secret.key],
+    },
+    bsc_testnet: {
+      url: `${secret.bsc_key}`,
+      accounts: [secret.key],
+    },
+  },
 };
